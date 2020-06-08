@@ -1,0 +1,16 @@
+{
+  "name": "multi_sensor",
+  "actions": {"check_serial_connection": 5,"get_sensor_values": 5, "alarm_check": 10},
+  "database_name": "sensors.db",
+  "database_table_name": "sensors",
+  "database_column_info": {"date_time": "TEXT", "temperature": "REAL", "humidity": "REAL", "light": "INTEGER", "co2": "INTEGER"},
+  "serial_connection_string": "/dev/rfcomm0",
+  "mac_address": "98:D3:31:F7:34:83",
+  "buadrate": 9600,
+  "timeout": 5,
+  "no_readings_limit": 3,
+  "alarm_values": {"temperature":  {"low": 55, "high": 88},
+                   "humidity": {"low": 40, "high": 70},
+                   "co2": {"low": 300, "high": 1600}
+                  }
+}

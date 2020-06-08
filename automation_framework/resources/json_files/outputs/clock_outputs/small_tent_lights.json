@@ -1,0 +1,13 @@
+{
+  "name": "lights_4x4",
+  "actions": {"find_state": 30, "confirm_state": 600},
+  "out_pins": [16],
+  "week_schedule": {"Monday": {"on_hour": 5, "off_hour":  0},
+                    "Tuesday": {"on_hour": 5, "off_hour":  0},
+                    "Wednesday": {"on_hour": 5, "off_hour":  0},
+                    "Thursday": {"on_hour": 5, "off_hour":  0},
+                    "Friday": {"on_hour": 5, "off_hour":  0},
+                    "Saturday": {"on_hour": 5, "off_hour":  0},
+                    "Sunday": {"on_hour": 5, "off_hour":  0}
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "exhaust_fan",
+  "actions": {"find_state": 5, "confirm_state": 600},
+  "out_pins": [32],
+  "on_seconds": 300,
+  "off_seconds": 1800
+}

@@ -1,0 +1,13 @@
+{
+  "name": "template",
+  "interval": 1,
+  "out_pins": [],
+  "week_schedule": {"Monday": {"on_hour": 1, "off_hour":  10},
+                    "Tuesday": {"on_hour": 1, "off_hour":  10},
+                    "Wednesday": {"on_hour": 1, "off_hour":  10},
+                    "Thursday": {"on_hour": 1, "off_hour":  10},
+                    "Friday": {"on_hour": 1, "off_hour":  10},
+                    "Saturday": {"on_hour": 1, "off_hour":  10},
+                    "Sunday": {"on_hour": 1, "off_hour":  10}
+  }
+}

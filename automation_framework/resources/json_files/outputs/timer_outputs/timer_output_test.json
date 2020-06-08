@@ -1,0 +1,7 @@
+{
+  "name": "timer output test",
+  "actions": {"find_state": 5, "print_state":  5},
+  "out_pins": [36],
+  "on_seconds": 20,
+  "off_seconds": 20
+}
