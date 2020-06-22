@@ -1,0 +1,7 @@
+{
+  "name": "template",
+  "interval": 1,
+  "out_pins": [],
+  "on_seconds": -1,
+  "off_seconds": -1
+}
