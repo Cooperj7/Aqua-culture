@@ -2,7 +2,7 @@
 A controller to handle all hardware IO using the raspberrypi GPIO pins
 """
 
-import RPi.GPIO as gpio
+#import RPi.GPIO as gpio
 import logging as log
 
 
@@ -11,9 +11,7 @@ class GPIOController:
     valid_output_pins = [7, 11, 12, 13, 15, 16, 18, 22, 29, 31, 32, 33, 36, 37]
 
     def __init__(self):
-        """
-        A wrapper class for RPi.GPIO used to handle GPIO functions on the raspberry pi
-        """
+        """ A wrapper class for RPi.GPIO used to handle GPIO functions on the raspberry pi """
 
         log.getLogger().debug("Initializing io controller...")
         gpio.setwarnings(False)
@@ -21,7 +19,13 @@ class GPIOController:
 
         log.getLogger().debug("Done setting mode")
 
-    def init_gpio(self, outputs):
+    def init_gpio(self, outputs) -> None:
+        """
+        Initializes the gpio object. Steps include checking for duplicate pins, setting up pins to be inputs, and
+        setting up pins to be outputs.
+
+        :param outputs: list of Output objects
+        """
 
         log.getLogger().debug("Done initializing outputs")
 
@@ -36,6 +40,7 @@ class GPIOController:
     def toggle_pins(self, pins: list, state: bool) -> None:
         """
         Switches the pin state to the current state of the object
+
         :param pins: pin numbers to change state
         :param state: state the pins should be set to
         """
@@ -51,6 +56,7 @@ class GPIOController:
     def toggle_pin(self, pin: int, state: bool) -> None:
         """
         Turns the pin on or off based on the given state
+
         :param pin: the pin to turn on or off
         :param state: the state ot set the pin to
         """
@@ -64,6 +70,7 @@ class GPIOController:
     def setup_output_pins(outputs: list) -> None:
         """
         Used to setup pins for each output in the list to be used as an output
+
         :param outputs: a list of outputs with pins to setup
         """
 
@@ -76,7 +83,8 @@ class GPIOController:
     def setup_output_pin(pin: int) -> None:
         """
         Used to setup pins for each output in the list to be used as an output
-        :param outputs: a list of outputs with pins to setup
+
+        :param pin: pin number to setup as an output pin
         """
 
         log.getLogger().debug(f"Setting pin '{pin}' as an output")
@@ -86,6 +94,7 @@ class GPIOController:
         """
         Checks clock_outputs for a block_button being set. If this is set a digital input pin is setup. If the digital
         input returns True the output will be set to False (off) for the set duration.
+
         :param outputs: outputs that potentially require input pin to be setup
         """
 
@@ -99,6 +108,7 @@ class GPIOController:
     def setup_digital_input(input_pin: int) -> None:
         """
         Sets a pin to be used as a digital input
+
         :param input_pin: pin to listen on for digital input
         """
 
@@ -106,16 +116,29 @@ class GPIOController:
         gpio.setup(input_pin, gpio.IN, pull_up_down=gpio.PUD_UP)
 
     @staticmethod
-    def turn_pin_off(pin: int):
+    def turn_pin_off(pin: int) -> None:
+        """
+        Wrapper method to turn a pin to the off state
+
+        :param pin: number of the pin to turn off
+        """
+
         gpio.output(pin, gpio.LOW)
 
     @staticmethod
     def turn_pin_on(pin: int):
+        """
+        Wrapper method to turn a pin to the on state
+
+        :param pin: number of the pin to turn on
+        """
+
         gpio.output(pin, gpio.HIGH)
 
     def turn_pins_on(self, pins: list) -> None:
         """
         Turns pins in the list to the high state
+
         :param pins: list of pin numbers to turn on
         """
 
@@ -126,6 +149,7 @@ class GPIOController:
     def turn_pins_off(self, pins: list) -> None:
         """
         Turns pins in the list to the low state
+
         :param pins: list of pin numbers to turn off
         """
 
@@ -136,6 +160,7 @@ class GPIOController:
     def validate_pins(self, outputs: list) -> None:
         """
         A container method to hold all methods to validate io pins
+
         :param outputs: a list of output objects with pins
         """
 
@@ -146,6 +171,7 @@ class GPIOController:
     def verify_no_duplicate_pins(outputs: list) -> None:
         """
         Checks to make sure pins are not being assigned twice
+
         :param outputs: list of outputs with pins
         """
 
@@ -167,6 +193,7 @@ class GPIOController:
         """
         Only certain pins on the raspberry pi header can be set as outputs. Check to make sure the pins being used as
         outputs are valid output pins.
+
         :param outputs: list of outputs with pins
         """
 
@@ -186,6 +213,7 @@ class GPIOController:
     def get_pin_state(pin: int) -> bool:
         """
         Gets the current state of the pin
+
         :param pin: number pin to check
         :return: the state of the pin (True/False)
         """
@@ -195,6 +223,7 @@ class GPIOController:
     def check_pin_voltage(self, pin: int, expected_state: bool) -> bool:
         """
         Validates the current state of the pin by comparing the pin state to the objects state
+
         :param pin: number pin to check
         :param expected_state: the expected state of the object
         :return: if the pin state matches the object state
@@ -210,6 +239,7 @@ class GPIOController:
     def check_push_button(pin: int) -> bool:
         """
         Checks if a push button has been pushed down or not
+
         :param pin: pin number to listen for the button on
         :return: if the button was pressed or not
         """

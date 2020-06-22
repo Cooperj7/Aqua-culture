@@ -5,7 +5,6 @@ This class is to create an output object that is toggled based on time
 import logging as log
 from collections import OrderedDict
 
-from framework.io.io import IoType
 from framework.io.output.output import Output
 
 

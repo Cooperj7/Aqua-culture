@@ -22,7 +22,6 @@ class EmailController:
         :param sender_email: Email address that is sending the email
         :param sender_password: The password used to login to the sender email
         :param receiving_emails: A list of emails or phone numbers to send messages to
-        :return: None
         """
 
         self.sender_email = sender_email
@@ -39,7 +38,7 @@ class EmailController:
 
         :param sensor_name: Name of the sensor sending the alert
         :param alert_type: Type of alert being sent ex. "HIGH-VALUE-ALERT"
-        :return: None
+        :return: if the timer is active or not (if it is alerts should not be sent)
         """
 
         if sensor_name not in self.message_type_timers.keys():
@@ -50,7 +49,7 @@ class EmailController:
 
         return self.message_type_timers[sensor_name][alert_type].check_time()
 
-    def send_email(self, sensor_name: str, alert_type: EmailReasons, message_text: str):
+    def send_email(self, sensor_name: str, alert_type: EmailReasons, message_text: str) -> None:
         """
         Sends an email message to the addresses stored in receiving_emails.
 

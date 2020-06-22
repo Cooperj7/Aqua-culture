@@ -2,9 +2,8 @@
 This is the parent class to all outputs. This contains common variables and methods
 across all outputs.
 """
-from collections import OrderedDict
 
-from framework.database.database import ResultCount, path_to_databases, update_output_state, select_data
+from framework.database.database import ResultCount, path_to_database, update_output_state, select_data
 from framework.io.gpio import GPIOController
 from framework.io.io import Io, IoType
 import logging as log
@@ -12,7 +11,7 @@ import logging as log
 
 class Output(Io):
 
-    def __init__(self, name: str, actions: OrderedDict, out_pins: list):
+    def __init__(self, name: str, actions: dict, out_pins: list):
         """
         Base class of all outputs
 
@@ -30,6 +29,7 @@ class Output(Io):
     def get_state(self) -> bool:
         """
         Getter for the state of the output object
+
         :return: if the output is on or off
         """
 
@@ -53,17 +53,22 @@ class Output(Io):
         """
         Setter for gpio_controller. There should only be one gpio object per raspberry pi so pass each output object a
         reference to same object.
+
         :param gpio_controller: the gpio object to preform gpio actions
         """
 
         self.gpio_controller = gpio_controller
 
-    def print_state(self):
+    def print_state(self) -> None:
+        """ Used for debugging. Prints the current state of object. """
         print(f"{self.name}: {self.state}")
 
     def log_state(self):
+        """ Used for debugging. Logs the current state of the object. """
 
         update_output_state("sensors.db", self.name, self.state)
 
     def print_log_state(self):
-        print(select_data(path_to_databases + "sensors.db", "output_states", ResultCount.ALL))
+        """ Used for debugging. Prints the state of the output object stored in the database. """
+
+        print(select_data(path_to_database + "sensors.db", "output_states", ResultCount.ALL))

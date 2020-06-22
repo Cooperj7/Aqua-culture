@@ -1,7 +1,7 @@
 {
   "name": "multi_sensor",
   "actions": {"check_serial_connection": 5,"get_sensor_values": 5, "alarm_check": 10},
-  "database_name": "sensors.db",
+  "database_name": "database.db",
   "database_table_name": "sensors",
   "database_column_info": {"date_time": "TEXT", "temperature": "REAL", "humidity": "REAL", "light": "INTEGER", "co2": "INTEGER"},
   "serial_connection_string": "/dev/rfcomm0",

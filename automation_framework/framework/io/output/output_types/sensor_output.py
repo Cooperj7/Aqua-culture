@@ -3,7 +3,6 @@ from typing import Union
 import logging as log
 
 from framework.database import database
-from framework.io.io import IoType
 from framework.io.output.output import Output
 
 from datetime import datetime
@@ -11,7 +10,7 @@ from datetime import datetime
 
 class SensorOutput(Output):
 
-    def __init__(self, name: str, actions: OrderedDict, output_pins: list, database_name: str, table_name: str,
+    def __init__(self, name: str, actions: OrderedDict, output_pins: list, table_name: str,
                  columns: [], value_shift: chr, target_value: Union[int, float], target_range: Union[int, float],
                  good_reading_interval: int, max_value: Union[float, int] = None, min_value: Union[float, int] = None):
         """
@@ -23,7 +22,6 @@ class SensorOutput(Output):
             {"method_name": 5, "method_name1": 10} method_name() will be executed every 5 seconds and method_name1()
             will be executed every 10 seconds
         :param output_pins: pins linked to output object
-        :param database_name: name of the database to get sensor data from
         :param table_name: name of the table in the database to get sensor data from
         :param columns: columns in database table to get data from
         :param value_shift: physical output will cause the value to increase or decrease, actual value = '+' or '-'.
@@ -44,7 +42,6 @@ class SensorOutput(Output):
         self.sensor_values = None
         self.gpio_controller = None
 
-        self.database_name = database_name
         self.table_name = table_name
         self.columns = columns
 

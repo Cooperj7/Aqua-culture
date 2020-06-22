@@ -13,7 +13,7 @@ from framework.database import database
 
 class MultiSensor(Io):
 
-    def __init__(self, name: str, actions: OrderedDict, database_name: str, database_table_name: str,
+    def __init__(self, name: str, actions: OrderedDict, database_table_name: str,
                  database_column_info: dict, serial_connection_name: str, alarm_values: dict,
                  sensor_mac_address: str = None, baudrate: int = 9600, timeout: int = 30, no_readings_limit: int = 5):
         """
@@ -24,9 +24,7 @@ class MultiSensor(Io):
             connection is assumed to be lost so try to restart it.
 
         :param name: name of the sensor
-        :param io_type: type of object ex input, output or manager
         :param actions: the method names and the intervals to execute them ex. {"find_state": 5}
-        :param database_name: name of the database to store values in
         :param database_table_name: name of the table in the database to store sensor values in
         :param database_column_info: column name and data type for each column
             ex. {"date_time": "TEXT", "temperature": "REAL"}
@@ -55,10 +53,9 @@ class MultiSensor(Io):
         self.no_bytes_count = 0
         self.no_readings_limit = no_readings_limit
 
-        self.database_name = database_name
-        self.table_name = database_table_name
+        self.database_table_name = database_table_name
         self.database_column_info = database_column_info
-        database.init_database(database_name, database_table_name, database_column_info, True)
+        database.init_database(database_table_name, database_column_info, True)
 
         # Create the serial connection
         self.start_serial_connection()
@@ -157,11 +154,9 @@ class MultiSensor(Io):
                         # Convert this to a dictionary to be inserted into the database.
                         # EX: "lights:304 co2:1000"
                         self.sensor_values['date_time'] = datetime.now().strftime("%m/%d/%Y %H:%M:%S")
-                        print(self.sensor_values)
 
                         # Add the date and time to the columns
-                        # print(f"sensor values: {self.sensor_values}")
-                        database.insert_data(self.database_name, self.table_name, self.sensor_values)
+                        database.insert_data(self.database_table_name, self.sensor_values)
 
                 else:
 
@@ -388,7 +383,7 @@ class MultiSensor(Io):
 
         for key in self.alarm_values:
 
-            sensor_values = database.get_sensor_reading(self.database_name, self.table_name, ["date_time", key])
+            sensor_values = database.get_sensor_reading(self.database_name, self.database_table_name, ["date_time", key])
             if self.validate_sensor_reading(sensor_values):
 
                 sensor_value = sensor_values[1]
@@ -428,7 +423,7 @@ class MultiSensor(Io):
 
         for key in self.alarm_values:
 
-            sensor_values = database.get_sensor_reading(self.database_name, self.table_name, ["date_time", key])
+            sensor_values = database.get_sensor_reading(self.database_name, self.database_table_name, ["date_time", key])
             if self.validate_sensor_reading(sensor_values):
 
                 sensor_value = sensor_values[1]

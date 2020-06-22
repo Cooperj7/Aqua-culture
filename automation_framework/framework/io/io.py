@@ -3,7 +3,6 @@ This the parent class to input and output objects
 """
 import inspect
 import time
-from collections import OrderedDict
 from enum import Enum
 
 from framework.email import EmailController
@@ -21,7 +20,7 @@ class IoType(Enum):
 
 class Io:
 
-    def __init__(self, name: str, io_type: IoType, actions: OrderedDict, output_pins: list):
+    def __init__(self, name: str, io_type: IoType, actions: dict, output_pins: list):
         """
         Init Io object
 
@@ -115,9 +114,6 @@ class Io:
 
         pass
 
-    def test_execution_interval(self):
-        print(f"{self.name}: {datetime.now().strftime('%m/%d/%Y %H:%M:%S')}")
-
     def start_timer(self, timer_name):
         """
         Basic timer method for debugging. Call this method to store the timer name and start time.
@@ -134,3 +130,7 @@ class Io:
     def end_timer(self):
 
         print(f"{self.timer_name} took: {time.time() - self.start_time}")
+
+    def test_execution_interval(self) -> None:
+        """ Used for debugging. Shows the interval a method is being executed. """
+        print(f"{self.name}: {datetime.now().strftime('%m/%d/%Y %H:%M:%S')}")

@@ -12,8 +12,6 @@ from framework.io.output.output_types.clock_output import ClockOutput
 from framework.io.output.output_types.sensor_output import SensorOutput
 from framework.io.output.output_types.timer_output import TimerOutput
 
-from framework.database.database import path_to_databases
-
 path_to_clock_outputs = "./resources/json_files/outputs/clock_outputs/"
 path_to_timer_outputs = "./resources/json_files/outputs/timer_outputs/"
 path_to_sensor_outputs = "./resources/json_files/outputs/sensor_outputs/"
@@ -22,7 +20,7 @@ path_to_sensor_inputs = "./resources/json_files/inputs/sensors/"
 
 path_to_email_info = "./resources/json_files/emails/"
 
-path_to_managers = "./resources/json_files/managers/database/"
+path_to_managers = "./resources/json_files/managers/"
 
 paths_dict = {"clock_outputs": "./resources/json_files/outputs/clock_outputs/",
               "timer_outputs": "./resources/json_files/outputs/timer_outputs/",
@@ -80,7 +78,7 @@ def create_multi_sensor(file_name: str) -> MultiSensor:
     with open(path, 'r') as json_file:
         data = json.load(json_file)
 
-    return MultiSensor(data["name"], data["actions"], path_to_databases + data["database_name"],
+    return MultiSensor(data["name"], data["actions"],
                        data["database_table_name"], data["database_column_info"], data["serial_connection_string"],
                        data["alarm_values"], data["mac_address"], data["buadrate"], data["timeout"],
                        data["no_readings_limit"])
@@ -99,7 +97,7 @@ def create_sensor_output(file_name: str) -> SensorOutput:
     with open(path, 'r') as json_file:
         data = json.load(json_file)
 
-    return SensorOutput(data["name"], data["actions"], data["out_pins"], path_to_databases + data["database_name"],
+    return SensorOutput(data["name"], data["actions"], data["out_pins"],
                         data["table_name"], data["columns"], data["value_shift"], data["target_value"],
                         data["target_range"], data["good_reading_interval"], data["max_value"], data["min_value"])
 
