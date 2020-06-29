@@ -20,9 +20,5 @@ class SensorData(models.Model):
     air_temp = models.FloatField(default=0)
     humidity = models.FloatField(default=0)
 
-    
-    
-    
-
-    
-    
+    def __str__(self):
+        return str(self.water_pH) + str(self.tds) + str(self.water_temp) + str(self.air_temp) + str(self.humidity)
