@@ -55,21 +55,22 @@ class WeatherManager(Io):
 
         request = f"https://api.openweathermap.org/data/2.5/forecast?zip={zip_code},{country_code}&units={units}&appid={api_key}"
         weather_data = self.call_api(request)["list"]
-        database.clear_data_in_table("weather")
-        for entry in weather_data:
+        if weather_data == {}:
+            database.clear_data_in_table("weather")
+            for entry in weather_data:
 
-            try:
-                data = {"date_time": entry["dsadasdt_txt"], "temperature": entry["main"]["temp"], "humidity": entry["main"]["humidity"],
-                        "min_temperature": entry["main"]["temp_min"], "max_temperature": entry["main"]["temp_max"],
-                        "weather_label": entry["weather"][0]["main"], "weather_description": entry["weather"][0]["description"],
-                        "cloudiness_level": entry["clouds"]["all"], "wind_speed": entry["wind"]["speed"]}
-                database.insert_data(table_name, data)
+                try:
+                    data = {"date_time": entry["dt_txt"], "temperature": entry["main"]["temp"], "humidity": entry["main"]["humidity"],
+                            "min_temperature": entry["main"]["temp_min"], "max_temperature": entry["main"]["temp_max"],
+                            "weather_label": entry["weather"][0]["main"], "weather_description": entry["weather"][0]["description"],
+                            "cloudiness_level": entry["clouds"]["all"], "wind_speed": entry["wind"]["speed"]}
+                    database.insert_data(table_name, data)
 
-            except:
+                except:
 
-                ex_string = "FAILED: could not find or store all weather data from the openWeather API call\n"
-                print(ex_string)
-                log.getLogger(ex_string)
+                    ex_string = "FAILED: could not find or store all weather data from the openWeather API call\n"
+                    print(ex_string)
+                    log.getLogger(ex_string)
 
     @staticmethod
     def init_weather_table() -> None:
@@ -80,3 +81,6 @@ class WeatherManager(Io):
                        "cloudiness_level": "INTEGER", "wind_speed": "REAL"}
         database.create_table(table_name, column_info, True)
 
+manager = WeatherManager("test", {})
+
+manager.store_weather_data()
