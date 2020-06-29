@@ -1,4 +1,3 @@
-from collections import OrderedDict
 from datetime import datetime
 import logging as log
 
@@ -10,7 +9,7 @@ class ClockOutput(Output):
     num_to_string = {0: "Monday", 1: "Tuesday", 2: "Wednesday", 3: "Wednesday", 4: "Thursday", 5: "Friday",
                      6: "Saturday", 7: "Sunday"}
 
-    def __init__(self, name: str, actions: OrderedDict, out_pins: list, week_schedule: OrderedDict,
+    def __init__(self, name: str, actions: dict, out_pins: list, week_schedule: dict,
                  block_button_pin: int = None, block_duration: int = None):
         """
         Represents an output switched based on the the time of day. An example is lights they turn on at a certain time
@@ -102,7 +101,7 @@ class ClockOutput(Output):
 
         # If the block_timer is None that means there is no block button set so it will never by blocked. If the
         # block_timer is not None then the gpio should only be allowed to update if the output is not being blocked.
-        if result != self.state and self.block_timer <= 0:
+        if result != self.state and self.block_timer <= 0 and self.__class__ == ClockOutput:
 
             self.state = result
             self.gpio_controller.toggle_pins(self.output_pins, self.state)
