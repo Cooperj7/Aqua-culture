@@ -1,1 +1,6 @@
 .DS_store
+.idea
+AC_project/db.sqlite3
+automation_framework/logs
+*.pyc
+/database.db
