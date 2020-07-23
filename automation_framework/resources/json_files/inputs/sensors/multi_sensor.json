@@ -1,16 +1,13 @@
 {
-  "name": "multi_sensor",
+  "name": "aqua-culture-sensor-cluster",
   "actions": {"check_serial_connection": 5,"get_sensor_values": 5, "alarm_check": 10},
   "database_name": "database.db",
-  "database_table_name": "sensors",
-  "database_column_info": {"date_time": "TEXT", "temperature": "REAL", "humidity": "REAL", "light": "INTEGER", "co2": "INTEGER"},
-  "serial_connection_string": "/dev/rfcomm0",
-  "mac_address": "98:D3:31:F7:34:83",
+  "database_table_name": "AC_webapp_sensordata",
+  "database_column_info": {"id": "PRIMARY KEY","date_time": "TEXT", "water_pH": "REAL", "tds": "REAL", "water_temp": "REAL", "air_temp":  "REAL", "humidity": "REAL"},
+  "serial_connection_string": "/dev/cu.HC-06-SPPDev",
+  "mac_address": "98:D3:41:F9:24:CC",
   "buadrate": 9600,
   "timeout": 5,
   "no_readings_limit": 3,
-  "alarm_values": {"temperature":  {"low": 55, "high": 88},
-                   "humidity": {"low": 40, "high": 70},
-                   "co2": {"low": 300, "high": 1600}
-                  }
+  "alarm_values": {}
 }

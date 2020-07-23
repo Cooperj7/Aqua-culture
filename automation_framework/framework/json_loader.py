@@ -17,16 +17,10 @@ path_to_timer_outputs = "./resources/json_files/outputs/timer_outputs/"
 path_to_sensor_outputs = "./resources/json_files/outputs/sensor_outputs/"
 
 path_to_sensor_inputs = "./resources/json_files/inputs/sensors/"
-
 path_to_email_info = "./resources/json_files/emails/"
-
 path_to_managers = "./resources/json_files/managers/"
 
-paths_dict = {"clock_outputs": "./resources/json_files/outputs/clock_outputs/",
-              "timer_outputs": "./resources/json_files/outputs/timer_outputs/",
-              "sensor_outputs": "./resources/json_files/outputs/sensor_outputs/",
-              "email_info": "./resources/json_files/emails/",
-              "sensor_inputs": "./resources/json_files/inputs/sensors/"}
+
 
 
 def create_clock_output(file_name: str, block_button_pin: int = None, block_duration: int = None) -> ClockOutput:
@@ -133,3 +127,11 @@ def create_database_manager(file_name: str):
         data = json.load(json_file)
 
         return DatabaseManager(data["name"], data["actions"], data["database_name"], data["max_data_age"])
+
+def create_weather_manager(file_name: str):
+
+    path = path_to_managers + file_name
+    with open(path, 'r') as json_file:
+        data = json.load(json_file)
+
+        return DatabaseManager(data["name"], data["actions"],)

@@ -1,0 +1,4 @@
+{
+  "name": "weather_manager",
+  "actions": {"call_api": 3600}
+}

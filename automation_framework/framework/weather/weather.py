@@ -80,7 +80,3 @@ class WeatherManager(Io):
                        "humidity": "INTEGER", "weather_label": "TEXT", "weather_description": "TEXT",
                        "cloudiness_level": "INTEGER", "wind_speed": "REAL"}
         database.create_table(table_name, column_info, True)
-
-manager = WeatherManager("test", {})
-
-manager.store_weather_data()

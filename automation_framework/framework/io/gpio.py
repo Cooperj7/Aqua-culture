@@ -2,7 +2,7 @@
 A controller to handle all hardware IO using the raspberrypi GPIO pins
 """
 
-#import RPi.GPIO as gpio
+import RPi.GPIO as gpio
 import logging as log
 
 

@@ -1,0 +1,7 @@
+{
+  "name": "water_pump",
+  "actions": {"find_state": 1},
+  "out_pins": [12],
+  "on_seconds": 5,
+  "off_seconds": 10
+}
