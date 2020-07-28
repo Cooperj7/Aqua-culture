@@ -3,31 +3,36 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 <style>
+.material-icons {vertical-align:-14%}
 ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
+	
 </style>
+
+<header class ="w3-center">
+	<div style="background-image: url('AC_background.jpg');">
+	<h1><b>AQUA-CULTURE</b></h1>
+	</div>
+</header>
 
 <body>
 
-<section class ="w3-container w3-center">
-	<h1>AQUA-CULTURE</h1>
-</section>
-
-<section class ="w3-sidebar w3-bar-block w3-green" style="width:20%">
+<section class ="w3-sidebar w3-bar-block w3-green" style="width:15%">
 	<ul>
-	<li><a href="#Home" class="w3-bar-item w3-button">Home</a></li>
-	<li><a href="#DataViz" class="w3-bar-item w3-button">Data Viz</a></li>
-	<li><a href="#Weather" class="w3-bar-item w3-button">Weather</a></li>
-	<button onclick="myFunction('Demo1')" class="w3-bar-item w3-button">Settings</button>
+	<li><a href="/templates/Homepage" class="w3-bar-item w3-button">Home <i class="w3-margin-left material-icons w3-large">home</i></a></li>
+	<li><a href="/templates/DataViz" class="w3-bar-item w3-button">Data Viz <i class="w3-margin-left material-icons w3-large">analytics</i></a></li>
+	<li><a href="/templates/Weather" class="w3-bar-item w3-button">Weather <i class="w3-margin-left material-icons w3-large">cloud_queue</i></a></li>
+	<button onclick="myFunction('Demo1')" class="w3-bar-item w3-button">Settings <i class="w3-margin-left material-icons w3-large">miscellaneous_services</i></button>
 		<div id="Demo1" class="w3-hide">
-  		<li><a href="#PumpSettings" class="w3-button w3-block w3-left-align">Pump Settings</a></li>
-  		<li><a href="#FishFeederSettings" class="w3-button w3-block w3-left-align">Fish Feeder Settings</a></li>
-		<li><a href="#PlantBuddy" class="w3-button w3-block w3-left-align">Plant Buddy Settings</a></li>
+  		<li><a href="/templates/PumpSettings" class="w3-button w3-block w3-left-align">Pump Settings</a></li>
+  		<li><a href="/templates/FishFeeder" class="w3-button w3-block w3-left-align">Fish Feeder Settings</a></li>
+		<li><a href="/templates/PlantBuddy" class="w3-button w3-block w3-left-align">Plant Buddy Settings</a></li>
 	</ul>
 </section>
 
@@ -42,7 +47,7 @@ function myFunction(id) {
 }
 </script>
 
-<div style="margin-left:20%">
+<div style="margin-left:15%">
 
 <section class ="w3-bar w3-teal">
 	<div class="w3-bar-item w3-center"> Water pH levels: </div>
@@ -73,10 +78,10 @@ function myFunction(id) {
 		<h3><label for ="CPI">Current Pump Intervals:
 		</h3>
 		<br>
-		<div>Pump is set to stay ON for {{}} Minutes
+		<div>Pump is set to stay ON for {{PumpSettings.on_time}} Minutes
 		</div>
 		<br>
-		<div>Pump is set to stay OFF for {{}} Minutes
+		<div>Pump is set to stay OFF for {{PumpSettings.off_time}} Minutes
 		</div>
 	<br>
 	<br>

@@ -12,15 +12,6 @@ ul {
   margin: 0;
   padding: 0;
 }
-
-.column {
-  float: left;
-  width: 33%;
-  padding: 0 0px;
-}
-
-	
-
 </style>
 
 <header class ="w3-center">
@@ -77,36 +68,48 @@ function myFunction(id) {
 <br>
 <br>
 <br>
-<br>
-<br>
 
-
-<section class ="w3-container w3-center">
-	<h3>Weather summary for the day: </h3>
+<form class = "w3-container w3-center">
+	<h2>Configure Fish Feeder System Settings</h2>
+	<br>
+	<br>
+	<div class="row">
+		<div><label for ="ffi">Current Fish Feeder Interval:
+		</div>
+		<br>
+		<div>Fish feeder feeds fish every {{FishFeederSettings.fishfeeder_time}} Hours
+		</div>
+	</div>
+	<br>
+	<br>				
+	<div class="row">
+		<div><label for="fname">Set Fish Feeder Interval to every </label>
+		</div>
+		<div><input type="number" id="ffi" number="FFI"> Hours
+		</div>
+	</div>
+	<br>
+	<br>
+	<br>
 	<br>
 	<br>
 	<br>
 	<div class="row">
-		<div class="column">
-			<div class ="w3-card">
-			<h3>Description:</h3>
-			<div class ="w3-container"> {{Weather.weather_description}} </div>
-    			</div>
+		<div><label for ="ffi">Current Fish Feeder Amount:
 		</div>
-		<div class="column">
-			<div class ="w3-card">
-			<h3>Temperature:</h3>
-			<div class ="w3-container"> {{Weather.temperature}} </div>
-    			</div>
-		</div>
-		<div class="column">
-			<div class ="w3-card">
-			<h3>Humidity:</h3>
-			<div class ="w3-container"> {{(Weather.humidity)}} </div>
-    			</div>
+		<br>
+		<div>Fish feeder feeds fish {{FishFeederSettings.fishfeeder_amount}} of food
 		</div>
 	</div>
-</section>
+	<br>
+	<br>				
+	<div class="row">
+		<div><label for="fname">Set Fish Feeder Amount to </label>
+		</div>
+		<div><input type="number" id="ffa" number="FFA"> grams
+		</div>
+	</div>
+</form>
 
 </div>
 

@@ -4,7 +4,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
 <style>
 .material-icons {vertical-align:-14%}
 ul {
@@ -13,15 +12,37 @@ ul {
   padding: 0;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+/* Float four columns side by side */
 .column {
   float: left;
-  width: 33%;
+  width: 25%;
   padding: 0 0px;
 }
 
-	
+/* Remove extra left and right margins, due to padding */
+.row {margin: 100 -15px;}
 
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 800px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
 </style>
+
 
 <header class ="w3-center">
 	<div style="background-image: url('AC_background.jpg');">
@@ -77,36 +98,72 @@ function myFunction(id) {
 <br>
 <br>
 <br>
-<br>
-<br>
-
 
 <section class ="w3-container w3-center">
-	<h3>Weather summary for the day: </h3>
-	<br>
+	<h3>Weather info for today, {{date_time = models.CharField(max_length=40)}} : </h3>
 	<br>
 	<br>
 	<div class="row">
 		<div class="column">
 			<div class ="w3-card">
 			<h3>Description:</h3>
-			<div class ="w3-container"> {{Weather.weather_description}} </div>
+			<div class ="w3-container"> {{weather_description = models.CharField(max_length=200)}} </div>
     			</div>
 		</div>
 		<div class="column">
 			<div class ="w3-card">
 			<h3>Temperature:</h3>
-			<div class ="w3-container"> {{Weather.temperature}} </div>
+			<div class ="w3-container"> {{temperature = models.FloatField(default=0)}} </div>
+    			</div>
+		</div>
+		<div class="column">
+			<div class ="w3-card">
+			<h3>Min-Temperature:</h3>
+			<div class ="w3-container"> {{min_temperature = models.FloatField(default=0)}} </div>
+    			</div>
+		</div>
+		<div class="column">
+			<div class ="w3-card">
+			<h3>Max-Temperature:</h3>
+			<div class ="w3-container"> {{max_temperature = models.FloatField(default=0)}} </div>
+    			</div>
+		</div>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="row">
+		<div class="column">
+			<div class ="w3-card">
+			<h3>Label:</h3>
+			<div class ="w3-container"> {{weather_label = models.CharField(max_length=50)}} </div>
     			</div>
 		</div>
 		<div class="column">
 			<div class ="w3-card">
 			<h3>Humidity:</h3>
-			<div class ="w3-container"> {{(Weather.humidity)}} </div>
+			<div class ="w3-container"> {{humidity = models.IntegerField(default=0)}} </div>
+    			</div>
+		</div>
+		<div class="column">
+			<div class ="w3-card">
+			<h3>Cloudiness:</h3>
+			<div class ="w3-container"> {{cloudiness_level = models.IntegerField(default=0)}} </div>
+    			</div>
+		</div>
+		<div class="column">
+			<div class ="w3-card">
+			<h3>Wind Speed:</h3>
+			<div class ="w3-container"> {{wind_speed = models.FloatField(default=0)}} </div>
     			</div>
 		</div>
 	</div>
-</section>
+		
+</section> 
 
 </div>
 

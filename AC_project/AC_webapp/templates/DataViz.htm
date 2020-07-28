@@ -12,15 +12,6 @@ ul {
   margin: 0;
   padding: 0;
 }
-
-.column {
-  float: left;
-  width: 33%;
-  padding: 0 0px;
-}
-
-	
-
 </style>
 
 <header class ="w3-center">
@@ -74,41 +65,10 @@ function myFunction(id) {
 	<div class="w3-bar-item w3-center"> {{ph.humidity}}</div>
 </section>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
-<section class ="w3-container w3-center">
-	<h3>Weather summary for the day: </h3>
-	<br>
-	<br>
-	<br>
-	<div class="row">
-		<div class="column">
-			<div class ="w3-card">
-			<h3>Description:</h3>
-			<div class ="w3-container"> {{Weather.weather_description}} </div>
-    			</div>
-		</div>
-		<div class="column">
-			<div class ="w3-card">
-			<h3>Temperature:</h3>
-			<div class ="w3-container"> {{Weather.temperature}} </div>
-    			</div>
-		</div>
-		<div class="column">
-			<div class ="w3-card">
-			<h3>Humidity:</h3>
-			<div class ="w3-container"> {{(Weather.humidity)}} </div>
-    			</div>
-		</div>
-	</div>
-</section>
 
 </div>
+
+
 
 </body>
 </html>
