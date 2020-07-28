@@ -1,46 +1,39 @@
 from django.shortcuts import render
-from .models import SensorData
 
 # Create your views here.
 
 def Homepage(request):
-
-    context = {
-        }
-
-    """ 'water_pH'=water_pH,
-        'tds'=tds,
-        'water_temp'=water_temp,
-        'air_temp'=air_temp,
-        'humidity'=humidity,
-        'date_time'=date_time,
-        'temperature'=temperature,
-        'min_temperature'=min_temperature,
-        'max_temperature'=max_temperature,
-        'humidity'=humidity,
-        'weather_label'=weather_label,
-        'weather_description'=weather description,
-        'cloudiness_level'=cloudiness level,
-        'wind_speed'=wind speed,
-        """
-
-    return render(request, 'Homepage.htm', context=context)
-
-# def sensordata(request):
-#
-#     ph = SensorData.water_pH
-#     tds = SensorData.tds
-#     water_temp = SensorData.water_temp
-#     air_temp = SensorData.air_temp
-#     humidity = SensorData.humidity
-#
-#     context={'ph': ph, "tds": tds, "water_temp": water_temp, "air_temp": air_temp, "humidity": humidity}
-#
-#     return render(request, "", context)
-
-def ph(request):
-
-    ph = SensorData.objects.latest("id")
-    context = {"ph": ph}
+    Homepage = SensorData.objects.latest("id")
+    context = {"water_pH": water_pH, "tds": tds, t"water_temp": water_temp, "air_temp": air_temp, "humidity": humidity}
 
     return render(request, "Homepage.html", context)
+
+def Weather(request):
+    Weather = Weather.objects.latest("id")
+    context = {"date_time": date_time, "temperature": temperature, "min_temperature": min_temperature, "max_temperature": max_temperature, "humidity": humidity, "weather_label": weather_label, "weather_description": weather_description, "cloudiness_level": cloudiness_level, "wind_speed": wind_speed}
+
+    return render(request, 'Weather.html', context)
+
+def DataViz(request):
+
+    return render(request, 'DataViz.html', context)
+
+def PlantBuddy(request):
+    PlantBuddy = PlantBuddy.objects.latest("id")
+    context = {"phone_num": phone_num}
+    
+    return render(request, 'PlantBuddy.html', context)
+
+def PumpSettings(request):
+    PumpSettings = PumpSettings.objects.latest("id")
+    context = {"on_time": on_time, "off_time": off_time}
+    
+    return render(request, 'PumpSettings.html', context)
+
+def FishFeederSettings(request):
+    FishFeederSettings = FishFeederSettings.objects.latest("id")
+    context = {"fishfeeder_time": fishfeeder_time, "fishfeeder_amount": fishfeeder_amount}
+    
+    return render(request, 'FishFeederSettings.html', context)
+
+    
