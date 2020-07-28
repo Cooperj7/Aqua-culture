@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<style>
+.material-icons {vertical-align:-14%}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+</style>
+
+<header class ="w3-center">
+	<div style="background-image: url('AC_background.jpg');">
+	<h1><b>AQUA-CULTURE</b></h1>
+	</div>
+</header>
+
+<body>
+
+<section class ="w3-sidebar w3-bar-block w3-green" style="width:15%">
+	<ul>
+	<li><a href="/templates/Homepage" class="w3-bar-item w3-button">Home <i class="w3-margin-left material-icons w3-large">home</i></a></li>
+	<li><a href="/templates/DataViz" class="w3-bar-item w3-button">Data Viz <i class="w3-margin-left material-icons w3-large">analytics</i></a></li>
+	<li><a href="/templates/Weather" class="w3-bar-item w3-button">Weather <i class="w3-margin-left material-icons w3-large">cloud_queue</i></a></li>
+	<button onclick="myFunction('Demo1')" class="w3-bar-item w3-button">Settings <i class="w3-margin-left material-icons w3-large">miscellaneous_services</i></button>
+		<div id="Demo1" class="w3-hide">
+  		<li><a href="/templates/PumpSettings" class="w3-button w3-block w3-left-align">Pump Settings</a></li>
+  		<li><a href="/templates/FishFeeder" class="w3-button w3-block w3-left-align">Fish Feeder Settings</a></li>
+		<li><a href="/templates/PlantBuddy" class="w3-button w3-block w3-left-align">Plant Buddy Settings</a></li>
+	</ul>
+</section>
+
+<script>
+function myFunction(id) {
+  var x = document.getElementById(id);
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+
+<div style="margin-left:15%">
+
+<section class ="w3-bar w3-teal">
+	<div class="w3-bar-item w3-center"> Water pH levels: </div>
+	<div class="w3-bar-item w3-center"> {{ph.water_pH}}</div>
+
+	<div class="w3-bar-item w3-center"> TDS: </div>
+	<div class="w3-bar-item w3-center"> {{ph.tds}}</div>
+
+	<div class="w3-bar-item w3-center"> Water Temp: </div>
+	<div class="w3-bar-item w3-center"> {{ph.water_temp}}</div>
+
+	<div class="w3-bar-item w3-center"> Air Temp: </div>
+	<div class="w3-bar-item w3-center"> {{ph.air_temp}}</div>
+
+	<div class="w3-bar-item w3-center"> Humidity: </div>
+	<div class="w3-bar-item w3-center"> {{ph.humidity}}</div>
+</section>
+
+<br>
+<br>
+<br>
+
+<form class = "w3-container w3-center">
+	<h2>Configure Fish Feeder System Settings</h2>
+	<br>
+	<br>
+	<div class="row">
+		<div><label for ="ffi">Current Fish Feeder Interval:
+		</div>
+		<br>
+		<div>Fish feeder feeds fish every {{FishFeederSettings.fishfeeder_time}} Hours
+		</div>
+	</div>
+	<br>
+	<br>				
+	<div class="row">
+		<div><label for="fname">Set Fish Feeder Interval to every </label>
+		</div>
+		<div><input type="number" id="ffi" number="FFI"> Hours
+		</div>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="row">
+		<div><label for ="ffi">Current Fish Feeder Amount:
+		</div>
+		<br>
+		<div>Fish feeder feeds fish {{FishFeederSettings.fishfeeder_amount}} of food
+		</div>
+	</div>
+	<br>
+	<br>				
+	<div class="row">
+		<div><label for="fname">Set Fish Feeder Amount to </label>
+		</div>
+		<div><input type="number" id="ffa" number="FFA"> grams
+		</div>
+	</div>
+</form>
+
+</div>
+
+</body>
+</html>
