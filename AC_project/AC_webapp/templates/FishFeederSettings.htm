@@ -30,8 +30,8 @@ ul {
 	<button onclick="myFunction('Demo1')" class="w3-bar-item w3-button">Settings <i class="w3-margin-left material-icons w3-large">miscellaneous_services</i></button>
 		<div id="Demo1" class="w3-hide">
   		<li><a href="/AC_webapp/PumpSettings/" class="w3-button w3-block w3-left-align">Pump Settings</a></li>
-  		<li><a href="/AC_webapp/FishFeeder" class="w3-button w3-block w3-left-align">Fish Feeder Settings</a></li>
-		<li><a href="/AC_webapp/PlantBuddy" class="w3-button w3-block w3-left-align">Plant Buddy Settings</a></li>
+  		<li><a href="/AC_webapp/FishFeederSettings/" class="w3-button w3-block w3-left-align">Fish Feeder Settings</a></li>
+		<li><a href="/AC_webapp/PlantBuddy/" class="w3-button w3-block w3-left-align">Plant Buddy Settings</a></li>
 	</ul>
 </section>
 
@@ -70,42 +70,32 @@ function myFunction(id) {
 <br>
 
 <form class = "w3-container w3-center">
-	<h2>Configure Fish Feeder System Settings</h2>
-	<br>
-	<br>
 	<div class="row">
-		<div><label for ="ffi">Current Fish Feeder Interval:
-		</div>
+		<h2>Configure Fish Feeder System Settings: </h2>
 		<br>
-		<div>Fish feeder feeds fish every {{FishFeederSettings.fishfeeder_time}} Hours
-		</div>
+		<h3>Fish feeder feeds fish every <b>{{FishFeederTime.Value}}</b> Hours
+		</h3>
 	</div>
 	<br>
 	<br>				
 	<div class="row">
-		<div><label for="fname">Set Fish Feeder Interval to every </label>
-		</div>
+		<h3>Set Fish Feeder Interval to every 
+		</h3>
 		<div><input type="number" id="ffi" number="FFI"> Hours
 		</div>
 	</div>
 	<br>
 	<br>
 	<br>
-	<br>
-	<br>
-	<br>
 	<div class="row">
-		<div><label for ="ffi">Current Fish Feeder Amount:
-		</div>
-		<br>
-		<div>Fish feeder feeds fish {{FishFeederSettings.fishfeeder_amount}} of food
-		</div>
+		<h3>Fish feeder feeds fish <b>{{FishFeederAmount.Value}}</b> gram(s) of food
+		</h3>
 	</div>
 	<br>
 	<br>				
 	<div class="row">
-		<div><label for="fname">Set Fish Feeder Amount to </label>
-		</div>
+		<h3>Set Fish Feeder Amount to 
+		</h3>
 		<div><input type="number" id="ffa" number="FFA"> grams
 		</div>
 	</div>
