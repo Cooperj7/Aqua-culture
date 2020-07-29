@@ -1,46 +1,36 @@
 from django.shortcuts import render
-from .models import SensorData
+from .models import SensorData, WeatherData, Settings
 
 # Create your views here.
 
 def Homepage(request):
+    Homepage = SensorData.objects.all()
+    context = {"Homepage": Homepage}
 
-    context = {
-        }
+    return render(request, "Homepage.htm", context)
 
-    """ 'water_pH'=water_pH,
-        'tds'=tds,
-        'water_temp'=water_temp,
-        'air_temp'=air_temp,
-        'humidity'=humidity,
-        'date_time'=date_time,
-        'temperature'=temperature,
-        'min_temperature'=min_temperature,
-        'max_temperature'=max_temperature,
-        'humidity'=humidity,
-        'weather_label'=weather_label,
-        'weather_description'=weather description,
-        'cloudiness_level'=cloudiness level,
-        'wind_speed'=wind speed,
-        """
+def Weather(request):
+    Weather = WeatherData.objects.all()
+    context = {"Weather": Weather}
 
-    return render(request, 'Homepage.htm', context=context)
+    return render(request, "Weather.htm", context)
 
-# def sensordata(request):
-#
-#     ph = SensorData.water_pH
-#     tds = SensorData.tds
-#     water_temp = SensorData.water_temp
-#     air_temp = SensorData.air_temp
-#     humidity = SensorData.humidity
-#
-#     context={'ph': ph, "tds": tds, "water_temp": water_temp, "air_temp": air_temp, "humidity": humidity}
-#
-#     return render(request, "", context)
+def PlantBuddy(request):
+    PlantBuddy = Settings.objects.all()
+    context = {"PlantBuddy": PlantBuddy}
+    
+    return render(request, "PlantBuddy.htm", context)
 
-def ph(request):
+def PumpSettings(request):
+    PumpSettings = Settings.objects.all()
+    context = {"PumpSettings":PumpSettings}
+    
+    return render(request, "PumpSettings.htm", context)
 
-    ph = SensorData.objects.latest("id")
-    context = {"ph": ph}
+def FishFeederSettings(request):
+    FishFeederSettings = Settings.objects.all()
+    context = {"FishFeederSettings": FishFeederSettings}
+    
+    return render(request, "FishFeederSettings.htm", context)
 
-    return render(request, "Homepage.html", context)
+    
