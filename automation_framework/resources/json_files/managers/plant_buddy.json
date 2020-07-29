@@ -1,0 +1,9 @@
+{
+  "name": "PlantBuddy",
+  "actions": {"check_date": 86400},
+  "sender_email": "auto.grow.alerter.bot9431@gmail.com",
+  "sender_password": "HisM4k39Vccshwn484jGEvagl",
+  "receiving_emails": "9785142966@vtext.com",
+  "zipcode": "01564",
+  "phone_num": "9785142966@vtext.com"
+}

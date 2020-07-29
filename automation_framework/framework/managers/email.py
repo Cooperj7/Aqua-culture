@@ -11,6 +11,7 @@ class EmailReasons(Enum):
     ERROR = "ERROR"
     HIGH_VALUE = "HIGH-VALUE-ALERT"
     LOW_VALUE = "LOW-VALUE-ALERT"
+    PLANT_BUDDY = "PLANT-BUDDY"
 
 
 class EmailController:
@@ -64,7 +65,7 @@ class EmailController:
 
             self._send_email(alert_type, message_text)
 
-    def _send_email(self, alert_type: EmailReasons, message_text: str):
+    def _send_email(self, alert_type: EmailReasons, message_text: str, sender_email, sender_password, receiving_emails):
         """
         Sends an alert message to the given email address.
 
@@ -80,9 +81,9 @@ class EmailController:
             context = ssl.create_default_context()
 
             with smtplib.SMTP_SSL("smtp.gmail.com", ssl_port, context=context) as server:
-                server.login(self.sender_email, self.sender_password)
+                server.login(sender_email, sender_password)
 
-                for email in self.receiving_emails:
+                for email in receiving_emails:
 
                     message_body = message_text
 
@@ -91,7 +92,7 @@ class EmailController:
                     email_message = EmailMessage()
                     email_message.set_content(message_body)
                     email_message['Subject'] = f'{alert_type.value}'
-                    email_message['From'] = self.sender_email
+                    email_message['From'] = sender_email
                     email_message['To'] = receiver_email
 
                     server.send_message(email_message)

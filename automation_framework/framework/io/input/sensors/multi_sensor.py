@@ -6,7 +6,7 @@ from subprocess import Popen, PIPE
 import logging as log
 from serial import Serial
 
-from framework.email import EmailReasons, EmailController
+from framework.managers.email import EmailReasons, EmailController
 from framework.io.io import Io, IoType
 from framework.database import database
 

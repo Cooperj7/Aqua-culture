@@ -148,8 +148,8 @@ def insert_data(table_name: str, data: dict, path_to_database: str = path_to_dat
     log.getLogger().debug("DONE insert_data 'Database'")
 
 
-def select_data(table_name: str, result_count: ResultCount,
-                columns: list = None, order_by: str = None, path_to_database: str = path_to_database):
+def select_data(table_name: str, result_count: ResultCount, columns: list = None, order_by: str = None,
+                path_to_database: str = path_to_database, where: str = None):
     """
     Basic select query
 
@@ -170,6 +170,10 @@ def select_data(table_name: str, result_count: ResultCount,
         columns = format_list(columns, False, False)
 
     query = f"SELECT {columns} FROM {table_name}"
+
+    if where is not None:
+        query += f" WHERE {where}"
+
     if order_by is not None:
         query += " " + order_by
 

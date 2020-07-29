@@ -6,11 +6,14 @@ import collections
 import json
 
 from framework.database.database_manager import DatabaseManager
-from framework.email import EmailController
+from framework.io.output.output_types.fish_feeder import FishFeeder
+from framework.managers.email import EmailController
 from framework.io.input.sensors.multi_sensor import MultiSensor
 from framework.io.output.output_types.clock_output import ClockOutput
 from framework.io.output.output_types.sensor_output import SensorOutput
 from framework.io.output.output_types.timer_output import TimerOutput
+from framework.managers.plant_buddy import PlantBuddy
+from framework.managers.weather import WeatherManager
 
 path_to_clock_outputs = "./resources/json_files/outputs/clock_outputs/"
 path_to_timer_outputs = "./resources/json_files/outputs/timer_outputs/"
@@ -19,6 +22,7 @@ path_to_sensor_outputs = "./resources/json_files/outputs/sensor_outputs/"
 path_to_sensor_inputs = "./resources/json_files/inputs/sensors/"
 path_to_email_info = "./resources/json_files/emails/"
 path_to_managers = "./resources/json_files/managers/"
+path_to_misc = "./resources/json_files/outputs/misc/"
 
 
 
@@ -134,4 +138,22 @@ def create_weather_manager(file_name: str):
     with open(path, 'r') as json_file:
         data = json.load(json_file)
 
-        return DatabaseManager(data["name"], data["actions"],)
+        return WeatherManager(data["name"], data["actions"], data["zipcode"])
+
+def create_fish_feeder(file_name: str):
+
+    path = path_to_misc + file_name
+    with open(path, 'r') as json_file:
+        data = json.load(json_file)
+
+        return FishFeeder(data["name"], data["actions"], data["out_pins"], data["feeding_time"], data["feeding_amount"])
+
+
+def create_plant_buddy(file_name: str):
+
+    path = path_to_managers + file_name
+    with open(path, 'r') as json_file:
+        data = json.load(json_file)
+
+        return PlantBuddy(data["name"], data["actions"], data["sender_email"], data["sender_password"],
+                          data["receiving_emails"], data["zipcode"], data["phone_num"])

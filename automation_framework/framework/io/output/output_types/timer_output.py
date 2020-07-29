@@ -5,6 +5,7 @@ This class is to create an output object that is toggled based on time
 import logging as log
 from collections import OrderedDict
 
+from framework.database.database import select_data, ResultCount
 from framework.io.output.output import Output
 
 
@@ -60,3 +61,13 @@ class TimerOutput(Output):
         if result != self.state:
             self.state = result
             self.gpio_controller.toggle_pins(self.output_pins, self.state)
+
+    def update_from_database(self):
+
+        temp_seconds = select_data("Settings", ResultCount.ONE, columns=["Value"], where="Setting_name LIKE 'on_time'")
+        if self.on_seconds != temp_seconds:
+            self.on_seconds = temp_seconds
+
+        temp_seconds = select_data("Settings", ResultCount.ONE, columns=["Value"], where="Setting_name LIKE 'off_time'")
+        if self.off_seconds != temp_seconds:
+            self.off_seconds = temp_seconds

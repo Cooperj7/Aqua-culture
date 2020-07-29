@@ -1,7 +1,9 @@
 {
-  "name": "lights_4x4",
-  "actions": {"find_state": 30, "check_block_button": 1, "confirm_state": 300},
-  "out_pins": [16],
+  "name": "FishFeeder",
+  "actions": {"find_state": 60},
+  "out_pins": [],
+  "feeding_time": "12",
+  "feeding_amount": "10",
   "week_schedule": {"Monday": {"on_hour": 18, "off_hour":  9},
                     "Tuesday": {"on_hour": 18, "off_hour":  9},
                     "Wednesday": {"on_hour": 18, "off_hour":  9},

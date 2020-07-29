@@ -1,8 +1,0 @@
-{
-  "name": "database_manager",
-  "actions": {
-    "purge_old_sensor_data": 86400
-  },
-  "max_data_age": 7,
-  "database_name": "sensors.db"
-}

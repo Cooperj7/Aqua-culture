@@ -13,7 +13,6 @@ import logging as log
 import framework.json_loader as json
 from framework.io.gpio import GPIOController
 from framework.io.io import IoType
-from framework.weather.weather import WeatherManager
 
 
 def set_gpio_controller(outputs, gpio_controller: GPIOController) -> None:
@@ -50,15 +49,13 @@ def main():
     # Initialize outputs
     multi_sensor = json.create_multi_sensor("multi_sensor.json")
     water_pump = json.create_timer_output("water_pump.json")
-
-    # Creating email controller object to sent alert emails
-    #email_controller = json.create_email_controller("email_info.json")
+    fish_feeder = json.create_fish_feeder("fish_feeder.json")
 
     # Managers
     weather_manager = json.create_weather_manager("weather_manager.json")
-    database_manager = json.create_database_manager("database_manager.json")
+    plant_buddy = json.create_plant_buddy("plant_buddy.json")
 
-    outputs = [multi_sensor, water_pump]
+    outputs = [multi_sensor, water_pump, fish_feeder]
 
     log.getLogger().debug("Done initializing outputs")
 
@@ -66,7 +63,8 @@ def main():
     gpio_controller.init_gpio(outputs)
     set_gpio_controller(outputs, gpio_controller)
 
-    #outputs.append(database_manager)
+    outputs.append(weather_manager)
+    outputs.append(plant_buddy)
 
     while True:
 

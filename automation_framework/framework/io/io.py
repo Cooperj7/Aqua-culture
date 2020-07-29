@@ -5,7 +5,7 @@ import inspect
 import time
 from enum import Enum
 
-from framework.email import EmailController
+from framework.managers.email import EmailController
 from framework.time.timer import Timer
 
 from datetime import datetime

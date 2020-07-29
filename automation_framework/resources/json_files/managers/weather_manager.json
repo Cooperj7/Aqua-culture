@@ -1,4 +1,5 @@
 {
   "name": "weather_manager",
-  "actions": {"call_api": 3600}
+  "actions": {"call_api": 3600},
+  "zipcode": "01564"
 }
