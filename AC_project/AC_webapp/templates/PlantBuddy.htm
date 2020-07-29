@@ -24,14 +24,14 @@ ul {
 
 <section class ="w3-sidebar w3-bar-block w3-green" style="width:15%">
 	<ul>
-	<li><a href="/templates/Homepage" class="w3-bar-item w3-button">Home <i class="w3-margin-left material-icons w3-large">home</i></a></li>
-	<li><a href="/templates/DataViz" class="w3-bar-item w3-button">Data Viz <i class="w3-margin-left material-icons w3-large">analytics</i></a></li>
-	<li><a href="/templates/Weather" class="w3-bar-item w3-button">Weather <i class="w3-margin-left material-icons w3-large">cloud_queue</i></a></li>
+	<li><a href="/AC_webapp/" class="w3-bar-item w3-button">Home <i class="w3-margin-left material-icons w3-large">home</i></a></li>
+	<li><a href="/AC_webapp/DataViz/" class="w3-bar-item w3-button">Data Viz <i class="w3-margin-left material-icons w3-large">analytics</i></a></li>
+	<li><a href="/AC_webapp/Weather/" class="w3-bar-item w3-button">Weather <i class="w3-margin-left material-icons w3-large">cloud_queue</i></a></li>
 	<button onclick="myFunction('Demo1')" class="w3-bar-item w3-button">Settings <i class="w3-margin-left material-icons w3-large">miscellaneous_services</i></button>
 		<div id="Demo1" class="w3-hide">
-  		<li><a href="/templates/PumpSettings" class="w3-button w3-block w3-left-align">Pump Settings</a></li>
-  		<li><a href="/templates/FishFeeder" class="w3-button w3-block w3-left-align">Fish Feeder Settings</a></li>
-		<li><a href="/templates/PlantBuddy" class="w3-button w3-block w3-left-align">Plant Buddy Settings</a></li>
+  		<li><a href="/AC_webapp/PumpSettings/" class="w3-button w3-block w3-left-align">Pump Settings</a></li>
+  		<li><a href="/AC_webapp/FishFeederSettings/" class="w3-button w3-block w3-left-align">Fish Feeder Settings</a></li>
+		<li><a href="/AC_webapp/PlantBuddy/" class="w3-button w3-block w3-left-align">Plant Buddy Settings</a></li>
 	</ul>
 </section>
 
@@ -50,19 +50,19 @@ function myFunction(id) {
 
 <section class ="w3-bar w3-teal">
 	<div class="w3-bar-item w3-center"> Water pH levels: </div>
-	<div class="w3-bar-item w3-center"> {{ph.water_pH}}</div>
+	<div class="w3-bar-item w3-center"> {{Homepage.water_pH}}</div>
 
 	<div class="w3-bar-item w3-center"> TDS: </div>
-	<div class="w3-bar-item w3-center"> {{ph.tds}}</div>
+	<div class="w3-bar-item w3-center"> {{Homepage.tds}}</div>
 
 	<div class="w3-bar-item w3-center"> Water Temp: </div>
-	<div class="w3-bar-item w3-center"> {{ph.water_temp}}</div>
+	<div class="w3-bar-item w3-center"> {{Homepage.water_temp}}</div>
 
 	<div class="w3-bar-item w3-center"> Air Temp: </div>
-	<div class="w3-bar-item w3-center"> {{ph.air_temp}}</div>
+	<div class="w3-bar-item w3-center"> {{Homepage.air_temp}}</div>
 
 	<div class="w3-bar-item w3-center"> Humidity: </div>
-	<div class="w3-bar-item w3-center"> {{ph.humidity}}</div>
+	<div class="w3-bar-item w3-center"> {{Homepage.humidity}}</div>
 </section>
 
 <br>
