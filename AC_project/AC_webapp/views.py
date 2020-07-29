@@ -1,39 +1,36 @@
 from django.shortcuts import render
+from .models import SensorData, WeatherData, Settings
 
 # Create your views here.
 
 def Homepage(request):
-    Homepage = SensorData.objects.latest("id")
-    context = {"water_pH": water_pH, "tds": tds, t"water_temp": water_temp, "air_temp": air_temp, "humidity": humidity}
+    Homepage = SensorData.objects.all()
+    context = {"Homepage": Homepage}
 
-    return render(request, "Homepage.html", context)
+    return render(request, "Homepage.htm", context)
 
 def Weather(request):
-    Weather = Weather.objects.latest("id")
-    context = {"date_time": date_time, "temperature": temperature, "min_temperature": min_temperature, "max_temperature": max_temperature, "humidity": humidity, "weather_label": weather_label, "weather_description": weather_description, "cloudiness_level": cloudiness_level, "wind_speed": wind_speed}
+    Weather = WeatherData.objects.all()
+    context = {"Weather": Weather}
 
-    return render(request, 'Weather.html', context)
-
-def DataViz(request):
-
-    return render(request, 'DataViz.html', context)
+    return render(request, "Weather.htm", context)
 
 def PlantBuddy(request):
-    PlantBuddy = PlantBuddy.objects.latest("id")
-    context = {"phone_num": phone_num}
+    PlantBuddy = Settings.objects.all()
+    context = {"PlantBuddy": PlantBuddy}
     
-    return render(request, 'PlantBuddy.html', context)
+    return render(request, "PlantBuddy.htm", context)
 
 def PumpSettings(request):
-    PumpSettings = PumpSettings.objects.latest("id")
-    context = {"on_time": on_time, "off_time": off_time}
+    PumpSettings = Settings.objects.all()
+    context = {"PumpSettings":PumpSettings}
     
-    return render(request, 'PumpSettings.html', context)
+    return render(request, "PumpSettings.htm", context)
 
 def FishFeederSettings(request):
-    FishFeederSettings = FishFeederSettings.objects.latest("id")
-    context = {"fishfeeder_time": fishfeeder_time, "fishfeeder_amount": fishfeeder_amount}
+    FishFeederSettings = Settings.objects.all()
+    context = {"FishFeederSettings": FishFeederSettings}
     
-    return render(request, 'FishFeederSettings.html', context)
+    return render(request, "FishFeederSettings.htm", context)
 
     

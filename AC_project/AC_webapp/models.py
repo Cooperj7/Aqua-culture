@@ -15,7 +15,7 @@ class FishFeederSettings(models.Model):
     def __str__(self):
         return str(fishfeeder_time) + str(fishfeeder_amount)
     
-class Weather(models.Model):
+class WeatherData(models.Model):
     date_time = models.CharField(max_length=40)
     temperature = models.FloatField(default=0)
     min_temperature = models.FloatField(default=0)
@@ -35,19 +35,24 @@ class SensorData(models.Model):
     water_temp = models.FloatField(default=0)
     air_temp = models.FloatField(default=0)
     humidity = models.FloatField(default=0)
-
+    
     def __str__(self):
         return str(self.water_pH) + str(self.tds) + str(self.water_temp) + str(self.air_temp) + str(self.humidity)
 
+class Settings(models.Model):
+    Setting_name = models.CharField(max_length=25)
+    Value = models.CharField(max_length=5)
+
+    def __str__(self):
+        return str(self.Setting_name) + str(self.Value)
     
-class PlantBuddy(models.Model): '
+class PlantBuddy(models.Model): 
     zipcode = models.CharField(max_length=10)
     phone_num = models.CharField(max_length=11)
 
-     def __str__(self):
-        return str(self.zipcode) + str(self. phone_num)
-    
-class DataViz(models.Model): 
+    def __str__(self):
+        return str(self.zipcode) + str(self.phone_num)
+
 
     
     
