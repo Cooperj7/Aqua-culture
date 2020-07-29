@@ -1,20 +1,6 @@
 from django.db import models
 
 # Create your models here.
-class PumpSettings(models.Model):
-    on_time = models.IntegerField(default=0)
-    off_time = models.IntegerField(default=0)
-
-    def __str__(self):
-        return str(self.on_time) + str(off_time)
-        
-class FishFeederSettings(models.Model):
-    fishfeeder_time = models.IntegerField(default=0)
-    fishfeeder_amount = models.IntegerField(default=0)
-
-    def __str__(self):
-        return str(fishfeeder_time) + str(fishfeeder_amount)
-    
 class WeatherData(models.Model):
     date_time = models.CharField(max_length=40)
     temperature = models.FloatField(default=0)
@@ -41,17 +27,12 @@ class SensorData(models.Model):
 
 class Settings(models.Model):
     Setting_name = models.CharField(max_length=25)
-    Value = models.CharField(max_length=5)
+    Value = models.CharField(max_length=20)
 
     def __str__(self):
         return str(self.Setting_name) + str(self.Value)
     
-class PlantBuddy(models.Model): 
-    zipcode = models.CharField(max_length=10)
-    phone_num = models.CharField(max_length=11)
 
-    def __str__(self):
-        return str(self.zipcode) + str(self.phone_num)
 
 
     
