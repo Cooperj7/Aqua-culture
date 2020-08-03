@@ -31,6 +31,7 @@ class Settings(models.Model):
 
     def __str__(self):
         return str(self.Setting_name) + str(self.Value)
+
     
 
 
