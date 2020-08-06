@@ -71,7 +71,7 @@ function myFunction(id) {
 <br>
 <br>
 
-<form class = "w3-container w3-center">
+<div class = "w3-container w3-center">
 	<h2>Configure Pump System Settings</h2>
 	<br>
 	<br>
@@ -87,15 +87,22 @@ function myFunction(id) {
 	<br>
 	<br>				
 	<div class="row">
-		<h3>Set Pump Intervals: </label>
-		</h3>
-		<br>
-		<div><input type="number" id="CPOT" number="cpot"> ON-Time (Minutes) </div>
-		<br>
-		<div><input type="number" id="CPOT" number="cpot"> OFF-Time (Minutes) </div>
+		<form class ="input" method = "POST">
+		{% csrf_token %}
+		{{form1.as_p}} 
+		<button class="button" type="submit"> Update</button>
+		</form>
+
+		<form class ="input" method = "POST">
+		{% csrf_token %}
+		{{form2.as_p}}
+		<button class="button" type="submit"> Update</button>
+		</form>
+		
+		
 	</div>
 
-</form>
+</div>
 
 </div>
 
