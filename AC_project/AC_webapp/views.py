@@ -52,8 +52,20 @@ def FishFeederSettings(request):
     Homepage = SensorData.objects.latest("id")
     FishFeederTime = Settings.objects.get(id=3)
     FishFeederAmount = Settings.objects.get(id=4)
-    context = {"Homepage": Homepage, "FishFeederTime": FishFeederTime, "FishFeederAmount": FishFeederAmount}
-    
+    if request.method == "POST" and 'btnform1' in request.POST:
+        TimeForm = PumpSettingsMF(request.POST, instance=FishFeederTime)
+        if TimeForm.is_valid():  
+            TimeForm.save()
+            return redirect('FishFeederSettings')
+    if request.method == "POST" and 'btnform2' in request.POST:
+        FoodForm = PumpSettingsMF(request.POST, instance=FishFeederAmount)
+        if FoodForm.is_valid():  
+            FoodForm.save()
+            return redirect('FishFeederSettings')
+    else:
+        TimeForm = PumpSettingsMF(request.POST, instance=FishFeederTime)
+        FoodForm = PumpSettingsMF(request.POST, instance=FishFeederAmount)
+    context = {"TimeForm": TimeForm, "FoodForm": FoodForm, "Homepage": Homepage, "FishFeederTime": FishFeederTime, "FishFeederAmount": FishFeederAmount}
     return render(request, "FishFeederSettings.htm", context)
 
 
