@@ -123,7 +123,7 @@ class GPIOController:
         :param pin: number of the pin to turn off
         """
 
-        gpio.output(pin, gpio.LOW)
+        gpio.output(pin, gpio.HIGH)
 
     @staticmethod
     def turn_pin_on(pin: int):
@@ -133,7 +133,7 @@ class GPIOController:
         :param pin: number of the pin to turn on
         """
 
-        gpio.output(pin, gpio.HIGH)
+        gpio.output(pin, gpio.LOW)
 
     def turn_pins_on(self, pins: list) -> None:
         """

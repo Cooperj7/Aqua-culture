@@ -16,8 +16,8 @@ class ResultCount(Enum):
     NONE = "NONE"
 
 
-path_to_database = "./framework/database/databases/database.db"
-#path_to_database = "../AC_project/db.sqlite3"
+#path_to_database = "./framework/database/databases/database.db"
+path_to_database = "../AC_project/db.sqlite3"
 
 def build_db_string(column_names: dict, can_be_null: bool) -> str:
     """

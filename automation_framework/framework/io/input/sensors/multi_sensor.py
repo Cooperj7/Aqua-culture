@@ -157,6 +157,7 @@ class MultiSensor(Io):
 
                         # Add the date and time to the columns
                         database.insert_data(self.database_table_name, self.sensor_values)
+                        print(self.sensor_values)
 
                 else:
 

@@ -19,7 +19,7 @@ class WeatherManager(Io):
         self.country_code = "us"
         self.zipcode = zipcode
         self.request = f"https://api.openweathermap.org/data/2.5/forecast?zip={self.zipcode},{self.country_code}&units={self.units}&appid={self.api_key}"
-        self.table_name = "weather"
+        self.table_name = "AC_webapp_weatherdata"
 
         self.init_weather_table()
 

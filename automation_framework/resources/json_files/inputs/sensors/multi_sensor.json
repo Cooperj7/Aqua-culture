@@ -4,7 +4,7 @@
   "database_name": "database.db",
   "database_table_name": "AC_webapp_sensordata",
   "database_column_info": {"id": "PRIMARY KEY","date_time": "TEXT", "water_pH": "REAL", "tds": "REAL", "water_temp": "REAL", "air_temp":  "REAL", "humidity": "REAL"},
-  "serial_connection_string": "/dev/cu.HC-06-SPPDev",
+  "serial_connection_string": "/dev/rfcomm0",
   "mac_address": "98:D3:41:F9:24:CC",
   "buadrate": 9600,
   "timeout": 5,

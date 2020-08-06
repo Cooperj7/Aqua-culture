@@ -53,9 +53,9 @@ def main():
 
     # Managers
     weather_manager = json.create_weather_manager("weather_manager.json")
-    plant_buddy = json.create_plant_buddy("plant_buddy.json")
+    #plant_buddy = json.create_plant_buddy("plant_buddy.json")
 
-    outputs = [multi_sensor, water_pump, fish_feeder]
+    outputs = [water_pump, fish_feeder]
 
     log.getLogger().debug("Done initializing outputs")
 
@@ -63,8 +63,9 @@ def main():
     gpio_controller.init_gpio(outputs)
     set_gpio_controller(outputs, gpio_controller)
 
+    outputs.append(multi_sensor)
     outputs.append(weather_manager)
-    outputs.append(plant_buddy)
+    #outputs.append(plant_buddy)
 
     while True:
 
