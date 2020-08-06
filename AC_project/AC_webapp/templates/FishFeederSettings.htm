@@ -15,7 +15,7 @@ ul {
 </style>
 
 <header class ="w3-center">
-	<div style="background-image: url('AC_background.jpg');">
+	<div style="background-image: url('templates/AC_background.jpg');">
 	<h1><b>AQUA-CULTURE</b></h1>
 	</div>
 </header>
@@ -69,7 +69,7 @@ function myFunction(id) {
 <br>
 <br>
 
-<form class = "w3-container w3-center">
+<div class = "w3-container w3-center">
 	<div class="row">
 		<h2>Configure Fish Feeder System Settings: </h2>
 		<br>
@@ -79,10 +79,12 @@ function myFunction(id) {
 	<br>
 	<br>				
 	<div class="row">
-		<h3>Set Fish Feeder Interval to every 
-		</h3>
-		<div><input type="number" id="ffi" number="FFI"> Hours
-		</div>
+		<h3>Set Fish Feeder Interval to every </h3>
+		<form class ="input" method = "POST">
+		{% csrf_token %}
+		{{TimeForm.as_p}}
+		<button class="button" type="submit" name="btnform1"> Update</button>
+		</form>
 	</div>
 	<br>
 	<br>
@@ -94,12 +96,14 @@ function myFunction(id) {
 	<br>
 	<br>				
 	<div class="row">
-		<h3>Set Fish Feeder Amount to 
-		</h3>
-		<div><input type="number" id="ffa" number="FFA"> grams
-		</div>
+		<h3>Set Fish Feeder Amount to </h3>
+		<form class ="input" method = "POST">
+		{% csrf_token %}
+		{{FoodForm.as_p}}
+		<button class="button" type="submit" name="btnform2"> Update</button>
+		</form>
 	</div>
-</form>
+</div>
 
 </div>
 
