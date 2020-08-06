@@ -32,15 +32,18 @@ def PumpSettings(request):
     PumpOnSettings = Settings.objects.get(id=1)
     PumpOffSettings = Settings.objects.get(id=2)
     if request.method == "POST":
-        form1 = PumpSettingsMF(request.POST, instance=PumpOnSettings)
-        form2 = PumpSettingsMF(request.POST, instance=PumpOffSettings)
-        form1.Value.save()
-        form2.Value.save()
-        return redirect('PumpSettings')
+        OnForm = PumpSettingsMF(request.POST, instance=PumpOnSettings)
+        if OnForm.is_valid(): 
+            OnForm.save()
+            return redirect('PumpSettings')
+        OffForm = PumpSettingsMF(request.POST, instance=PumpOffSettings)
+        if OffForm.is_valid():
+            OffForm.save()
+            return redirect('PumpSettings')
     else:
-        form1 = PumpSettingsMF(request.POST, instance=PumpOnSettings)
-        form2 = PumpSettingsMF(request.POST, instance=PumpOffSettings)
-    context = {"form1": form1, "form2": form2, "Homepage": Homepage, "PumpOnSettings": PumpOnSettings, "PumpOffSettings": PumpOffSettings}
+        OnForm = PumpSettingsMF(request.POST, instance=PumpOnSettings)
+        OffForm = PumpSettingsMF(request.POST, instance=PumpOffSettings)
+    context = {"OnForm": OnForm, "OffForm": OffForm, "Homepage": Homepage, "PumpOnSettings": PumpOnSettings, "PumpOffSettings": PumpOffSettings}
     return render(request, "PumpSettings.htm", context)
 
 
