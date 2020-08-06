@@ -31,11 +31,12 @@ def PumpSettings(request):
     Homepage = SensorData.objects.latest("id")
     PumpOnSettings = Settings.objects.get(id=1)
     PumpOffSettings = Settings.objects.get(id=2)
-    if request.method == "POST":
-        OnForm = PumpSettingsMF(request.POST, instance=PumpOnSettings)
-        if OnForm.is_valid(): 
+    if request.method == "POST" and 'btnform1' in request.POST:
+        OnForm = PumpSettingsMF(request.POST, instance=PumpOnSettings)    
+        if OnForm.is_valid():  
             OnForm.save()
             return redirect('PumpSettings')
+    if request.method == "POST" and 'btnform2' in request.POST:
         OffForm = PumpSettingsMF(request.POST, instance=PumpOffSettings)
         if OffForm.is_valid():
             OffForm.save()
