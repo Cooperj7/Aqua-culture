@@ -89,13 +89,9 @@ function myFunction(id) {
 	<div class="row">
 		<form class ="input" method = "POST">
 		{% csrf_token %}
-		{{form1.as_p}} 
-		<button class="button" type="submit"> Update</button>
-		</form>
-
-		<form class ="input" method = "POST">
-		{% csrf_token %}
-		{{form2.as_p}}
+		{{OnForm.as_p}} 
+		<br>
+		{{OffForm.as_p}}
 		<button class="button" type="submit"> Update</button>
 		</form>
 		
