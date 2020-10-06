@@ -60,37 +60,30 @@ ul {
 
 <br>
 <br>
-<br>
-<br>
-<br>
+<div style="margin-left:5%">
+<h1> SYSTEM SETTINGS </h1>
+</div>
 
-
-<section class ="w3-container w3-center">
-	<h3>Weather summary for the day: </h3>
+<section class ="w3-container">
+	<div class="w3-bar"><p>Pump ON-Time:   <b>{{PumpOnSettings.Value}}</b> minutes</p> </div>
+	<br>
+	<div class="w3-bar"><p>Pump OFF-Time:   <b>{{PumpOffSettings.Value}}</b> minutes</p> </div>
+	<br>
+	<div class="w3-bar"><p>Fish Feeder Inteval:   <b>{{FishFeederTime.Value}}</b> Hours</p> </div>
+	<br>
+	<div class="w3-bar"><p>Fish Feeder Amount:   <b>{{FishFeederAmount.Value}}</b> Grams of Food</p> </div>
+	<br>
+	<div class="w3-bar"><p>Phone #:   <b>401-989-3948</b> </p> </div>
+	<br>
+	<div class="w3-bar"><p>Zip-Code:   <b>02878</b> </p> </div>
 	<br>
 	<br>
 	<br>
-	<div class="row">
-		<div class="column">
-			<div class ="w3-card">
-			<h3>Description:</h3>
-			<div class ="w3-container"> {{Weather.weather_description}} </div>
-    			</div>
-		</div>
-		<div class="column">
-			<div class ="w3-card">
-			<h3>Temperature:</h3>
-			<div class ="w3-container"> {{Weather.temperature}} </div>
-    			</div>
-		</div>
-		<div class="column">
-			<div class ="w3-card">
-			<h3>Humidity:</h3>
-			<div class ="w3-container"> {{Weather.humidity}} </div>
-    			</div>
-		</div>
+		<a href="/AC_webapp/SettingsEdit/" class="w3-bar-item w3-button">EDIT </a>
 	</div>
 </section>
+
+
 
 </div>
 

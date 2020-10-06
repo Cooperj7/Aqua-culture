@@ -59,37 +59,47 @@ ul {
 </section>
 
 <br>
-<br>
-<br>
+<div style="margin-left:5%">
+<h1> SYSTEM SETTINGS </h1>
+</div>
 <br>
 <br>
 
-
-<section class ="w3-container w3-center">
-	<h3>Weather summary for the day: </h3>
-	<br>
-	<br>
-	<br>
-	<div class="row">
-		<div class="column">
-			<div class ="w3-card">
-			<h3>Description:</h3>
-			<div class ="w3-container"> {{Weather.weather_description}} </div>
-    			</div>
-		</div>
-		<div class="column">
-			<div class ="w3-card">
-			<h3>Temperature:</h3>
-			<div class ="w3-container"> {{Weather.temperature}} </div>
-    			</div>
-		</div>
-		<div class="column">
-			<div class ="w3-card">
-			<h3>Humidity:</h3>
-			<div class ="w3-container"> {{Weather.humidity}} </div>
-    			</div>
-		</div>
-	</div>
+<section class ="w3-container">
+    	<form method="POST" value="{{PumpOnSettings.Value}}">
+			{% csrf_token %}
+			<b>Pump On-Time (minutes):</b>
+				{{OnForm.as_p}}
+				<button class="button" type="submit" name="btnform1"> Update</button>
+		</form>
+		<br>
+	    <br>
+	   <form method="POST">
+			{% csrf_token %}
+			<b>Pump Off-Time (minutes):</b>
+				{{OffForm.as_p}}
+				<button class="button" type="submit" name="btnform2"> Update</button>
+		</form>
+		<br>
+	    <br>
+	    <form method="POST">
+			{% csrf_token %}
+			<b>Fish Feeder Interval (hours):</b>
+				{{TimeForm.as_p}}
+				<button class="button" type="submit" name="btnform3"> Update</button>
+		</form>
+	    <br>
+	    <br>
+		<form method="POST">
+			{% csrf_token %}
+			<b>Fish Feeder Amount (grams):</b>
+				{{FoodForm.as_p}}
+				<button class="button" type="submit" name="btnform4"> Update</button>
+		</form>
+		<div class="w3-bar">
+			<a href="/AC_webapp/SettingsPage/" class="w3-bar-item w3-button">CANCEL </a>
+		</div> 	
+    </form>
 </section>
 
 </div>

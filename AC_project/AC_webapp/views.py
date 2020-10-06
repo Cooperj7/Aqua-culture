@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import SensorData, WeatherData, Settings
-from .forms import PumpSettingsMF
+from .forms import SettingsMF
 from django.http import HttpResponse
 
 
@@ -20,56 +20,78 @@ def Weather(request):
 
     return render(request, "Weather.htm", context)
 
-def PlantBuddy(request):
-    Homepage = SensorData.objects.latest("id")
-    PlantBuddy = Settings.objects.get(id=6)
-    context = {"Homepage": Homepage,"PlantBuddy": PlantBuddy}
-    
-    return render(request, "PlantBuddy.htm", context)
-
-def PumpSettings(request):
+def SettingsPage(request):
     Homepage = SensorData.objects.latest("id")
     PumpOnSettings = Settings.objects.get(id=1)
     PumpOffSettings = Settings.objects.get(id=2)
-    if request.method == "POST" and 'btnform1' in request.POST:
-        OnForm = PumpSettingsMF(request.POST, instance=PumpOnSettings)    
-        if OnForm.is_valid():  
-            OnForm.save()
-            return redirect('PumpSettings')
-    if request.method == "POST" and 'btnform2' in request.POST:
-        OffForm = PumpSettingsMF(request.POST, instance=PumpOffSettings)
-        if OffForm.is_valid():
-            OffForm.save()
-            return redirect('PumpSettings')
-    else:
-        OnForm = PumpSettingsMF(request.POST, instance=PumpOnSettings)
-        OffForm = PumpSettingsMF(request.POST, instance=PumpOffSettings)
-    context = {"OnForm": OnForm, "OffForm": OffForm, "Homepage": Homepage, "PumpOnSettings": PumpOnSettings, "PumpOffSettings": PumpOffSettings}
-    return render(request, "PumpSettings.htm", context)
-
-
-def FishFeederSettings(request):
-    Homepage = SensorData.objects.latest("id")
     FishFeederTime = Settings.objects.get(id=3)
     FishFeederAmount = Settings.objects.get(id=4)
+    
     if request.method == "POST" and 'btnform1' in request.POST:
-        TimeForm = PumpSettingsMF(request.POST, instance=FishFeederTime)
-        if TimeForm.is_valid():  
-            TimeForm.save()
-            return redirect('FishFeederSettings')
+        OnForm = SettingsMF(request.POST, instance=PumpOnSettings)    
+        if OnForm.is_valid():  
+            OnForm.save()
+            return redirect('SettingsPage')
     if request.method == "POST" and 'btnform2' in request.POST:
-        FoodForm = PumpSettingsMF(request.POST, instance=FishFeederAmount)
-        if FoodForm.is_valid():  
-            FoodForm.save()
-            return redirect('FishFeederSettings')
+        OffForm = SettingsMF(request.POST, instance=PumpOffSettings)
+        if OffForm.is_valid():
+            OffForm.save()
+            return redirect('SettingsPage')
+    if request.method == "POST" and 'btnform3' in request.POST:
+        OnForm = SettingsMF(request.POST, instance=FishFeederTime)    
+        if OnForm.is_valid():  
+            OnForm.save()
+            return redirect('SettingsPage')
+    if request.method == "POST" and 'btnform4' in request.POST:
+        OffForm = SettingsMF(request.POST, instance=FishFeederAmount)
+        if OffForm.is_valid():
+            OffForm.save()
+            return redirect('SettingsPage')
     else:
-        TimeForm = PumpSettingsMF(request.POST, instance=FishFeederTime)
-        FoodForm = PumpSettingsMF(request.POST, instance=FishFeederAmount)
-    context = {"TimeForm": TimeForm, "FoodForm": FoodForm, "Homepage": Homepage, "FishFeederTime": FishFeederTime, "FishFeederAmount": FishFeederAmount}
-    return render(request, "FishFeederSettings.htm", context)
+        OnForm = SettingsMF(request.POST, instance=PumpOnSettings)
+        OffForm = SettingsMF(request.POST, instance=PumpOffSettings)
+        TimeForm = SettingsMF(request.POST, instance=FishFeederTime)
+        FoodForm = SettingsMF(request.POST, instance=FishFeederAmount)
+        
+    context = {"Homepage": Homepage,"PumpOnSettings": PumpOnSettings, "PumpOffSettings": PumpOffSettings,"FishFeederTime": FishFeederTime, "FishFeederAmount": FishFeederAmount,"OnForm": OnForm, "OffForm": OffForm,"TimeForm": TimeForm, "FoodForm": FoodForm}
+    return render(request, "SettingsPage.htm", context)
 
 
+def SettingsEdit(request):
+    Homepage = SensorData.objects.latest("id")
+    PumpOnSettings = Settings.objects.get(id=1)
+    PumpOffSettings = Settings.objects.get(id=2)
+    FishFeederTime = Settings.objects.get(id=3)
+    FishFeederAmount = Settings.objects.get(id=4)
 
+    if request.method == "POST" and 'btnform1' in request.POST:
+        OnForm = SettingsMF(request.POST, instance=PumpOnSettings)
+        if OnForm.is_valid():
+            OnForm.save()
+            return redirect('SettingsPage')
+    if request.method == "POST" and 'btnform2' in request.POST:
+        OffForm = SettingsMF(request.POST, instance=PumpOffSettings)
+        if OffForm.is_valid():
+            OffForm.save()
+            return redirect('SettingsPage')
+    if request.method == "POST" and 'btnform3' in request.POST:
+        TimeForm = SettingsMF(request.POST, instance=FishFeederTime)
+        if OnForm.is_valid():
+            OnForm.save()
+            return redirect('SettingsPage')
+    if request.method == "POST" and 'btnform4' in request.POST:
+        FoodForm = SettingsMF(request.POST, instance=FishFeederAmount)
+        if OffForm.is_valid():
+            OffForm.save()
+            return redirect('SettingsPage')
+    else:
+        OnForm = SettingsMF(request.POST, instance=PumpOnSettings)
+        OffForm = SettingsMF(request.POST, instance=PumpOffSettings)
+        TimeForm = SettingsMF(request.POST, instance=FishFeederTime)
+        FoodForm = SettingsMF(request.POST, instance=FishFeederAmount)
 
-
+    context = {"Homepage": Homepage, "PumpOnSettings": PumpOnSettings, "PumpOffSettings": PumpOffSettings,
+               "FishFeederTime": FishFeederTime, "FishFeederAmount": FishFeederAmount, "OnForm": OnForm,
+               "OffForm": OffForm, "TimeForm": TimeForm, "FoodForm": FoodForm}
+    return render(request, "SettingsEdit.htm", context)
     

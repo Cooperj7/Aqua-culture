@@ -1,7 +1,7 @@
 from django.forms import ModelForm
 from .models import Settings
 
-class PumpSettingsMF(ModelForm):
+class SettingsMF(ModelForm):
     class Meta:
         model = Settings
         fields = ['Value']
