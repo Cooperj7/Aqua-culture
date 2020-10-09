@@ -68,7 +68,7 @@ ul {
 <section class ="w3-container">
     	<form method="POST" value="{{PumpOnSettings.Value}}">
 			{% csrf_token %}
-			<b>Pump On-Time (minutes):</b>
+			<b>Pump On-Time ({{PumpOnSettings.Value}} minutes):</b>
 				{{OnForm.as_p}}
 				<button class="button" type="submit" name="btnform1"> Update</button>
 		</form>
@@ -76,7 +76,7 @@ ul {
 	    <br>
 	   <form method="POST">
 			{% csrf_token %}
-			<b>Pump Off-Time (minutes):</b>
+			<b>Pump Off-Time ({{PumpOffSettings.Value}} minutes):</b>
 				{{OffForm.as_p}}
 				<button class="button" type="submit" name="btnform2"> Update</button>
 		</form>
@@ -84,7 +84,7 @@ ul {
 	    <br>
 	    <form method="POST">
 			{% csrf_token %}
-			<b>Fish Feeder Interval (hours):</b>
+			<b>Fish Feeder Interval ({{FishFeederTime.Value}} hours):</b>
 				{{TimeForm.as_p}}
 				<button class="button" type="submit" name="btnform3"> Update</button>
 		</form>
@@ -92,7 +92,7 @@ ul {
 	    <br>
 		<form method="POST">
 			{% csrf_token %}
-			<b>Fish Feeder Amount (grams):</b>
+			<b>Fish Feeder Amount ({{FishFeederAmount.Value}} grams):</b>
 				{{FoodForm.as_p}}
 				<button class="button" type="submit" name="btnform4"> Update</button>
 		</form>
